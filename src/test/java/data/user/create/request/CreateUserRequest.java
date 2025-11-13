@@ -1,7 +1,7 @@
 package data.user.create.request;
 
 import config.endpoints.Endpoints;
-import data.user.create.response.CreateUserResponseSuccessData;
+import data.user.create.response.success.CreateUserResponseSuccessData;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import io.restassured.specification.ResponseSpecification;

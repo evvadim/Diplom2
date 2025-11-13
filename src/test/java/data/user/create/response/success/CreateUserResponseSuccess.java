@@ -1,4 +1,4 @@
-package data.user.create.response;
+package data.user.create.response.success;
 
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.ResponseSpecification;

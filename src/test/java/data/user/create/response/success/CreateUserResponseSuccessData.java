@@ -1,6 +1,6 @@
-package data.user.create.response;
+package data.user.create.response.success;
 
-import data.user.create.response.elements.User;
+import data.user.create.response.success.elements.User;
 
 public class CreateUserResponseSuccessData {
 
