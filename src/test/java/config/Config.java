@@ -12,6 +12,9 @@ public class Config {
     private static final String userPassword;
     private static final String userName;
 
+    private static final String wrongEmail;
+    private static final String wrongUserPassword;
+
     static {
 
         Properties properties = new Properties();
@@ -22,9 +25,13 @@ public class Config {
         }
 
         baseURI = properties.getProperty("baseURI");
+
         email = properties.getProperty("email");
         userPassword = properties.getProperty("userPassword");
         userName = properties.getProperty("userName");
+
+        wrongEmail = properties.getProperty("wrongEmail");
+        wrongUserPassword = properties.getProperty("wrongUserPassword");
 
     }
 
@@ -43,6 +50,14 @@ public class Config {
 
     public static String getUserName() {
         return userName;
+    }
+
+    public static String getWrongEmail() {
+        return wrongEmail;
+    }
+
+    public static String getWrongUserPassword() {
+        return wrongUserPassword;
     }
 
 }
