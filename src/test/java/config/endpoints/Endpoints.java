@@ -1,0 +1,8 @@
+package config.endpoints;
+
+public class Endpoints {
+
+    public static final String CREATE_USER = "/api/auth/register";
+    public static final String LOGIN_USER = "/api/auth/login";
+
+}
