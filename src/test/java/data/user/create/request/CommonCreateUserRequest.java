@@ -1,28 +1,16 @@
 package data.user.create.request;
 
 import config.Config;
-import io.qameta.allure.Step;
+import data.user.common.ACommonRequest;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
-import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import io.restassured.specification.ResponseSpecification;
 
-public class CommonCreateUserRequest {
+public class CommonCreateUserRequest extends ACommonRequest {
 
     public static RequestSpecification requestSpecification = new RequestSpecBuilder()
             .setBaseUri(Config.getBaseURI())
             .setContentType(ContentType.JSON)
             .build();
-
-    @Step("Check Response Specification")
-    public static void checkResponseSpecs(Response response, ResponseSpecification responseSpecification) {
-        response.then().spec(responseSpecification);
-    }
-
-    @Step("Cast response to Class<T> and return Object")
-    public static <T> Object extractResponseToObject(Response response, Class<T> anyClass) {
-        return response.body().as(anyClass);
-    }
 
 }
