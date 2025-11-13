@@ -1,6 +1,6 @@
 package data.user;
 
-import data.user.create.CreateUserData;
+import data.user.create.request.CreateUserData;
 
 public class User {
 
