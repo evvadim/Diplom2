@@ -36,6 +36,7 @@ public class CreateUserAccountParamTests {
     @Parameterized.Parameters(name = "Testing Data for Create User Endpoint without one of required fields. Set {index}.")
     public static Object[][] getCredentials() {
         return new Object[][] {
+                {getEmail(), getUserPassword(), getUserName(), true},
                 {null, getUserPassword(), getUserName(), false},
                 {getEmail(), null, getUserName(), false},
                 {getEmail(), getUserPassword(), null, false},
@@ -57,7 +58,7 @@ public class CreateUserAccountParamTests {
 
     @Test
     @DisplayName("Create User Test without required fields")
-    public void createUserExpectedTrue() {
+    public void createUserTests() {
 
         CreateUserRequest createUserRequest = new CreateUserRequest(createUserData);
         if (isUserShouldBeCreated) {
