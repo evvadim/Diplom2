@@ -1,13 +1,14 @@
 package tests;
 
+import data.user.create.request.CommonCreateUserRequest;
 import data.user.create.request.CreateUserData;
 import data.user.create.request.CreateUserRequest;
 import data.user.create.response.forbidden.exist.CreateUserResponseForbiddenExist;
 import data.user.create.response.success.CreateUserResponseSuccess;
 import data.user.create.response.success.CreateUserResponseSuccessData;
 import data.user.delete.request.DeleteUserRequest;
-import data.user.delete.response.DeleteUserResponseSuccess;
 import io.qameta.allure.junit4.DisplayName;
+import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,35 +32,33 @@ public class CreateTwinUserAccountTest {
     @Before
     public void setUp() {
 
-        // создаём оригинальную учётную запись
+        // создаём объект запроса оригинальной учётной записи
         createUserRequestOrigin = new CreateUserRequest(createUserDataOrigin);
 
         // проверяем успешность создания
-        createUserResponseSuccessDataOrigin = createUserRequestOrigin.createUserRequest(CreateUserResponseSuccess.RESPONSE_SPEC);
+        Response response = createUserRequestOrigin.createUserRequest(CreateUserResponseSuccess.RESPONSE_SPEC);
+        // извлекаем из ответа объект с данными
+        createUserResponseSuccessDataOrigin = (CreateUserResponseSuccessData) CommonCreateUserRequest.extractResponseToObject(response, CreateUserResponseSuccessData.class);
 
     }
 
     @Test
-    @DisplayName("Testing Create User Endpoint using Twin email.")
+    @DisplayName("Testing Create Twin Users using same email.")
     public void createUserExpectedTrue() {
 
-        // пытаемся создать учётную запись с таким же значением email
-        CreateUserRequest createUserRequestTwin = new CreateUserRequest(createUserDataTwin);
+        // создаём объект запроса учётной записи близнеца
+        createUserRequestTwin = new CreateUserRequest(createUserDataTwin);
 
         // ожидаем получить код 403, статус `Forbidden` и сообщение `User already exists`
-        // в случае ошибки удаляем близнеца
-        try {
-            createUserResponseSuccessDataTwin = createUserRequestTwin.createUserRequest(CreateUserResponseForbiddenExist.RESPONSE_SPEC);
-        } catch (Exception e) {
-            new DeleteUserRequest(createUserResponseSuccessDataTwin.getAccessToken()).deleteUserRequest();
-        }
+        Response response = createUserRequestTwin.createUserRequest(CreateUserResponseForbiddenExist.RESPONSE_SPEC);
+        createUserResponseSuccessDataTwin = (CreateUserResponseSuccessData) CommonCreateUserRequest.extractResponseToObject(response, CreateUserResponseSuccessData.class);
 
     }
 
     @After
     public void tearDown() {
         // удаляем пользователя
-        new DeleteUserRequest(createUserResponseSuccessDataOrigin.getAccessToken()).deleteUserRequest(DeleteUserResponseSuccess.RESPONSE_SPEC);
+        new DeleteUserRequest(createUserResponseSuccessDataOrigin.getAccessToken()).deleteUserRequest();
     }
 
 }

@@ -18,7 +18,7 @@ public class CreateUserRequest {
     }
 
     @Step("Create User POST Request")
-    private CreateUserResponseSuccessData createUserRequestAndCheckResponseSpec(ResponseSpecification specification) {
+    private Response createUserRequestAndCheckResponseSpec(ResponseSpecification specification) {
 
         Response response = given()
                 .spec(CommonCreateUserRequest.requestSpecification)
@@ -29,15 +29,15 @@ public class CreateUserRequest {
             checkResponseSpecs(response, specification);
         }
 
-        return (CreateUserResponseSuccessData) CommonCreateUserRequest.extractResponseToObject(response, CreateUserResponseSuccessData.class);
+        return response;
 
     }
 
-    public CreateUserResponseSuccessData createUserRequest() {
+    public Response createUserRequest() {
         return createUserRequestAndCheckResponseSpec(null);
     }
 
-    public CreateUserResponseSuccessData createUserRequest(ResponseSpecification specification) {
+    public Response createUserRequest(ResponseSpecification specification) {
         return createUserRequestAndCheckResponseSpec(specification);
     }
 

@@ -1,6 +1,6 @@
 package data.user.create.response.success;
 
-import data.user.create.response.success.elements.User;
+import data.user.create.response.elements.User;
 
 public class CreateUserResponseSuccessData {
 
@@ -47,4 +47,5 @@ public class CreateUserResponseSuccessData {
     public void setRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
     }
+
 }

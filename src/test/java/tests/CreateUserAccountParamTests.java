@@ -1,5 +1,6 @@
 package tests;
 
+import data.user.create.request.CommonCreateUserRequest;
 import data.user.create.request.CreateUserData;
 import data.user.create.request.CreateUserRequest;
 import data.user.create.response.forbidden.require.CreateUserResponseForbiddenRequire;
@@ -8,6 +9,7 @@ import data.user.create.response.success.CreateUserResponseSuccessData;
 import data.user.delete.request.DeleteUserRequest;
 import data.user.delete.response.DeleteUserResponseSuccess;
 import io.qameta.allure.junit4.DisplayName;
+import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -45,7 +47,8 @@ public class CreateUserAccountParamTests {
 
         // проверяем возможность создать пользователя
         CreateUserRequest createUserRequestValid = new CreateUserRequest(createUserWithValidData);
-        CreateUserResponseSuccessData createUserResponseSuccessDataValid = createUserRequestValid.createUserRequest(CreateUserResponseSuccess.RESPONSE_SPEC);
+        Response response = createUserRequestValid.createUserRequest(CreateUserResponseSuccess.RESPONSE_SPEC);
+        CreateUserResponseSuccessData createUserResponseSuccessDataValid = (CreateUserResponseSuccessData) CommonCreateUserRequest.extractResponseToObject(response, CreateUserResponseSuccessData.class);
 
         // удаляем этого пользователя
         new DeleteUserRequest(createUserResponseSuccessDataValid.getAccessToken()).deleteUserRequest(DeleteUserResponseSuccess.RESPONSE_SPEC);
@@ -58,7 +61,8 @@ public class CreateUserAccountParamTests {
 
         CreateUserRequest createUserRequest = new CreateUserRequest(createUserData);
         if (isUserShouldBeCreated) {
-            createUserResponseSuccessData = createUserRequest.createUserRequest(CreateUserResponseSuccess.RESPONSE_SPEC);
+            Response response = createUserRequest.createUserRequest(CreateUserResponseSuccess.RESPONSE_SPEC);
+            createUserResponseSuccessData = (CreateUserResponseSuccessData) CommonCreateUserRequest.extractResponseToObject(response, CreateUserResponseSuccessData.class);
         } else {
             createUserRequest.createUserRequest(CreateUserResponseForbiddenRequire.RESPONSE_SPEC);
         }
