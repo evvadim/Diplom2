@@ -1,6 +1,6 @@
 package tests;
 
-import data.user.User;
+import data.user.UserAccount;
 import data.user.create.request.CreateUserData;
 import data.user.create.request.CreateUserRequest;
 import data.user.create.response.CreateUserResponseSuccess;
@@ -8,14 +8,14 @@ import org.junit.Test;
 
 import static config.Config.*;
 
-public class CreateUserTests {
+public class CreateUserAccountTests {
 
     CreateUserData createUserData = new CreateUserData(getEmail(), getUserPassword(), getUserName());
-    User user = new User(createUserData);
+    UserAccount userAccount = new UserAccount(createUserData);
 
     @Test
     public void createUserExpectedTrue() {
-        new CreateUserRequest(user.getCreateUserData()).createUserRequest(CreateUserResponseSuccess.RESPONSE_SPEC);
+        new CreateUserRequest(userAccount.getCreateUserData()).createUserRequest(CreateUserResponseSuccess.RESPONSE_SPEC);
     }
 
 }

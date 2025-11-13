@@ -2,27 +2,27 @@ package data.user;
 
 import data.user.create.request.CreateUserData;
 
-public class User {
+public class UserAccount {
 
     private String email;
     private String password;
     private String name;
     private CreateUserData createUserData;
 
-    public User(String email, String password, String name) {
+    public UserAccount(String email, String password, String name) {
         this.email = email;
         this.password = password;
         this.name = name;
     }
 
-    public User() {
+    public UserAccount() {
     }
 
-    public User(CreateUserData createUserData) {
-        this.email = createUserData.getName();
+    public UserAccount(CreateUserData createUserData) {
+        this.createUserData = createUserData;
+        this.email = createUserData.getEmail();
         this.password = createUserData.getPassword();
         this.name = createUserData.getName();
-        this.createUserData = createUserData;
     }
 
     public String getEmail() {
