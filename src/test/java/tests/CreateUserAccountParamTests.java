@@ -24,7 +24,7 @@ public class CreateUserAccountParamTests {
     CreateUserData createUserWithValidData = new CreateUserData(getEmail(), getUserPassword(), getUserName());
     CreateUserResponseSuccessData createUserResponseSuccessData;
 
-    // параметры
+    // переменные для параметризации
     private final CreateUserData createUserData;
     private final Boolean isUserShouldBeCreated;
 
