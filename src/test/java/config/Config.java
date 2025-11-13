@@ -12,8 +12,8 @@ public class Config {
     private static final String userPassword;
     private static final String userName;
 
-    private static final String wrongEmail;
-    private static final String wrongUserPassword;
+    private static final String anotherUserPassword;
+    private static final String anotherUserName;
 
     static {
 
@@ -30,8 +30,8 @@ public class Config {
         userPassword = properties.getProperty("userPassword");
         userName = properties.getProperty("userName");
 
-        wrongEmail = properties.getProperty("wrongEmail");
-        wrongUserPassword = properties.getProperty("wrongUserPassword");
+        anotherUserPassword = properties.getProperty("anotherUserPassword");
+        anotherUserName = properties.getProperty("anotherUserName");
 
     }
 
@@ -52,12 +52,12 @@ public class Config {
         return userName;
     }
 
-    public static String getWrongEmail() {
-        return wrongEmail;
+    public static String getAnotherUserPassword() {
+        return anotherUserPassword;
     }
 
-    public static String getWrongUserPassword() {
-        return wrongUserPassword;
+    public static String getAnotherUserName() {
+        return anotherUserName;
     }
 
 }
