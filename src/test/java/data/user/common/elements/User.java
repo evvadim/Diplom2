@@ -1,4 +1,4 @@
-package data.user.create.response.elements;
+package data.user.common.elements;
 
 public class User {
 
