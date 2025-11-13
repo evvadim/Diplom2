@@ -2,14 +2,14 @@ package data.user.common;
 
 import data.user.common.elements.User;
 
-public class CommonResponseSuccessData {
+public class CommonUserDataFields {
 
     private Boolean success;
     private User user;
     private String accessToken;
     private String refreshToken;
 
-    public CommonResponseSuccessData(Boolean success, User user, String accessToken, String refreshToken) {
+    public CommonUserDataFields(Boolean success, User user, String accessToken, String refreshToken) {
         this.success = success;
         this.user = user;
         this.accessToken = accessToken;
