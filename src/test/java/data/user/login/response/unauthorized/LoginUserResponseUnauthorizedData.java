@@ -1,8 +1,8 @@
 package data.user.login.response.unauthorized;
 
-import data.user.common.CommonServerMessage;
+import common.data.CommonServerMessageData;
 
-public class LoginUserResponseUnauthorizedData extends CommonServerMessage {
+public class LoginUserResponseUnauthorizedData extends CommonServerMessageData {
 
     public LoginUserResponseUnauthorizedData(Boolean success, String message) {
         super(success, message);

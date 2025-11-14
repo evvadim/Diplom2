@@ -1,6 +1,7 @@
 package data.user.create.request;
 
 import config.endpoints.Endpoints;
+import common.http.FetchResponse;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import io.restassured.specification.ResponseSpecification;
@@ -8,7 +9,7 @@ import io.restassured.specification.ResponseSpecification;
 import static data.user.create.request.CommonCreateUserRequest.checkResponseSpecs;
 import static io.restassured.RestAssured.given;
 
-public class CreateUserRequest {
+public class CreateUserRequest extends FetchResponse {
 
     private final CreateUserData createUserData;
 
@@ -17,7 +18,7 @@ public class CreateUserRequest {
     }
 
     @Step("Create User POST Request")
-    private Response createUserRequestAndCheckResponseSpec(ResponseSpecification specification) {
+    protected Response requestAndCheckResponseSpec(ResponseSpecification specification) {
 
         Response response = given()
                 .spec(CommonCreateUserRequest.requestSpecification)
@@ -30,14 +31,6 @@ public class CreateUserRequest {
 
         return response;
 
-    }
-
-    public Response createUserRequest() {
-        return createUserRequestAndCheckResponseSpec(null);
-    }
-
-    public Response createUserRequest(ResponseSpecification specification) {
-        return createUserRequestAndCheckResponseSpec(specification);
     }
 
 }

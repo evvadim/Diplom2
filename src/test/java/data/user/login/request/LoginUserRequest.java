@@ -1,14 +1,15 @@
 package data.user.login.request;
 
+import common.http.FetchResponse;
 import config.endpoints.Endpoints;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import io.restassured.specification.ResponseSpecification;
 
-import static data.user.common.ACommonRequest.checkResponseSpecs;
+import static common.http.CheckAndExtractResponseDataAsClass.checkResponseSpecs;
 import static io.restassured.RestAssured.given;
 
-public class LoginUserRequest {
+public class LoginUserRequest extends FetchResponse {
 
     private final LoginUserData loginUserData;
 
@@ -17,7 +18,7 @@ public class LoginUserRequest {
     }
 
     @Step("Login User POST Request")
-    private Response loginUserRequestAndCheckResponseSpec(ResponseSpecification specification) {
+    protected Response requestAndCheckResponseSpec(ResponseSpecification specification) {
 
         Response response = given()
                 .spec(CommonLoginUserRequest.requestSpecification)
@@ -30,14 +31,6 @@ public class LoginUserRequest {
 
         return response;
 
-    }
-
-    public Response loginUserRequest() {
-        return loginUserRequestAndCheckResponseSpec(null);
-    }
-
-    public Response loginUserRequest(ResponseSpecification specification) {
-        return loginUserRequestAndCheckResponseSpec(specification);
     }
 
 }

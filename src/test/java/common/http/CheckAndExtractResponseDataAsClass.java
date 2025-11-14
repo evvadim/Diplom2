@@ -1,10 +1,10 @@
-package data.user.common;
+package common.http;
 
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import io.restassured.specification.ResponseSpecification;
 
-public abstract class ACommonRequest {
+public class CheckAndExtractResponseDataAsClass {
 
     @Step("Check Response Specification")
     public static void checkResponseSpecs(Response response, ResponseSpecification responseSpecification) {

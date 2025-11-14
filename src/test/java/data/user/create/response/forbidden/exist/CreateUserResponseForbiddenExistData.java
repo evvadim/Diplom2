@@ -1,8 +1,8 @@
 package data.user.create.response.forbidden.exist;
 
-import data.user.common.CommonServerMessage;
+import common.data.CommonServerMessageData;
 
-public class CreateUserResponseForbiddenExistData extends CommonServerMessage {
+public class CreateUserResponseForbiddenExistData extends CommonServerMessageData {
 
     public CreateUserResponseForbiddenExistData(Boolean success, String message) {
         super(success, message);

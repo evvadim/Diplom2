@@ -4,8 +4,8 @@ import data.user.create.request.CreateUserData;
 
 public class LoginUserData {
 
-    private String email;
-    private String password;
+    private final String email;
+    private final String password;
     private CreateUserData createUserData;
 
     public LoginUserData(String email, String password) {

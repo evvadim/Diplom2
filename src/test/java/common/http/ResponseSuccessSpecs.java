@@ -1,4 +1,4 @@
-package data.user.common;
+package common.http;
 
 import data.user.create.response.success.CreateUserResponseSuccessData;
 import io.restassured.builder.ResponseSpecBuilder;
@@ -6,7 +6,7 @@ import io.restassured.specification.ResponseSpecification;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 
-public class CommonResponseSuccessSpecs {
+public class ResponseSuccessSpecs {
 
     private static final Integer EXPECTED_CODE = 200;
     private static final String EXPECTED_STATUS_LINE = "HTTP/1.1 " + EXPECTED_CODE + " OK";

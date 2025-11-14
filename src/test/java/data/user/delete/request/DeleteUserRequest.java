@@ -1,5 +1,6 @@
 package data.user.delete.request;
 
+import common.http.FetchResponse;
 import config.endpoints.Endpoints;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
@@ -8,7 +9,7 @@ import io.restassured.specification.ResponseSpecification;
 import static data.user.delete.request.CommonDeleteUserRequest.checkResponseSpecs;
 import static io.restassured.RestAssured.given;
 
-public class DeleteUserRequest {
+public class DeleteUserRequest extends FetchResponse {
 
     private final String accessToken;
 
@@ -17,7 +18,7 @@ public class DeleteUserRequest {
     }
 
     @Step("Delete User DELETE Request")
-    private void deleteUserRequestAndCheckResponseSpec(ResponseSpecification specification) {
+    protected Response requestAndCheckResponseSpec(ResponseSpecification specification) {
         Response response = given()
                 .spec(CommonDeleteUserRequest.requestSpecification)
                 .auth().oauth2(accessToken.substring(7))
@@ -27,14 +28,8 @@ public class DeleteUserRequest {
             checkResponseSpecs(response, specification);
         }
 
-    }
+        return response;
 
-    public void deleteUserRequest() {
-        deleteUserRequestAndCheckResponseSpec(null);
-    }
-
-    public void deleteUserRequest(ResponseSpecification specification) {
-        deleteUserRequestAndCheckResponseSpec(specification);
     }
 
 }

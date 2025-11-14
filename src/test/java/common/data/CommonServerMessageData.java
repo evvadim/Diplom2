@@ -1,16 +1,16 @@
-package data.user.common;
+package common.data;
 
-public class CommonServerMessage {
+public class CommonServerMessageData {
 
     private Boolean success;
     private String message;
 
-    public CommonServerMessage(Boolean success, String message) {
+    public CommonServerMessageData(Boolean success, String message) {
         this.success = success;
         this.message = message;
     }
 
-    public CommonServerMessage() {
+    public CommonServerMessageData() {
     }
 
     public Boolean getSuccess() {

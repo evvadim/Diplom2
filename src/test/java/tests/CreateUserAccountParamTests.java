@@ -48,11 +48,11 @@ public class CreateUserAccountParamTests {
 
         // проверяем возможность создать пользователя
         CreateUserRequest createUserRequestValid = new CreateUserRequest(createUserWithValidData);
-        Response response = createUserRequestValid.createUserRequest(CreateUserResponseSuccess.RESPONSE_SPEC);
+        Response response = createUserRequestValid.fetchResponse(CreateUserResponseSuccess.RESPONSE_SPEC);
         CreateUserResponseSuccessData createUserResponseSuccessDataValid = (CreateUserResponseSuccessData) CommonCreateUserRequest.extractResponseToObject(response, CreateUserResponseSuccessData.class);
 
         // удаляем этого пользователя
-        new DeleteUserRequest(createUserResponseSuccessDataValid.getAccessToken()).deleteUserRequest(DeleteUserResponseSuccess.RESPONSE_SPEC);
+        new DeleteUserRequest(createUserResponseSuccessDataValid.getAccessToken()).fetchResponse(DeleteUserResponseSuccess.RESPONSE_SPEC);
 
     }
 
@@ -62,10 +62,10 @@ public class CreateUserAccountParamTests {
 
         CreateUserRequest createUserRequest = new CreateUserRequest(createUserData);
         if (isUserShouldBeCreated) {
-            Response response = createUserRequest.createUserRequest(CreateUserResponseSuccess.RESPONSE_SPEC);
+            Response response = createUserRequest.fetchResponse(CreateUserResponseSuccess.RESPONSE_SPEC);
             createUserResponseSuccessData = (CreateUserResponseSuccessData) CommonCreateUserRequest.extractResponseToObject(response, CreateUserResponseSuccessData.class);
         } else {
-            createUserRequest.createUserRequest(CreateUserResponseForbiddenRequire.RESPONSE_SPEC);
+            createUserRequest.fetchResponse(CreateUserResponseForbiddenRequire.RESPONSE_SPEC);
         }
 
     }
@@ -73,7 +73,7 @@ public class CreateUserAccountParamTests {
     @After
     public void tearDown() {
         if (isUserShouldBeCreated) {
-            new DeleteUserRequest(createUserResponseSuccessData.getAccessToken()).deleteUserRequest(DeleteUserResponseSuccess.RESPONSE_SPEC);
+            new DeleteUserRequest(createUserResponseSuccessData.getAccessToken()).fetchResponse(DeleteUserResponseSuccess.RESPONSE_SPEC);
         }
     }
 

@@ -54,7 +54,7 @@ public class LoginUserAccountParamTests {
     public void setUp() {
 
         CreateUserRequest createUserRequest = new CreateUserRequest(createUserData);
-        Response response = createUserRequest.createUserRequest();
+        Response response = createUserRequest.fetchResponse();
         createUserResponseSuccessData = (CreateUserResponseSuccessData) CommonCreateUserRequest.extractResponseToObject(response, CreateUserResponseSuccessData.class);
 
     }
@@ -65,17 +65,17 @@ public class LoginUserAccountParamTests {
         LoginUserRequest loginUserRequest = new LoginUserRequest(loginUserData);
 
         if (isShouldBeLoggedIn) {
-            Response response = loginUserRequest.loginUserRequest(LoginUserResponseSuccess.RESPONSE_SPEC);
+            Response response = loginUserRequest.fetchResponse(LoginUserResponseSuccess.RESPONSE_SPEC);
             loginUserResponseSuccessData = (LoginUserResponseSuccessData) CommonLoginUserRequest.extractResponseToObject(response, LoginUserResponseSuccessData.class);
             assertThat(loginUserResponseSuccessData.getUser().getName(), equalTo(createUserResponseSuccessData.getUser().getName()));
         } else {
-            loginUserRequest.loginUserRequest(LoginUserResponseUnauthorized.RESPONSE_SPEC);
+            loginUserRequest.fetchResponse(LoginUserResponseUnauthorized.RESPONSE_SPEC);
         }
 
     }
 
     @After
     public void tearDown() {
-        new DeleteUserRequest(createUserResponseSuccessData.getAccessToken()).deleteUserRequest(DeleteUserResponseSuccess.RESPONSE_SPEC);
+        new DeleteUserRequest(createUserResponseSuccessData.getAccessToken()).fetchResponse(DeleteUserResponseSuccess.RESPONSE_SPEC);
     }
 }

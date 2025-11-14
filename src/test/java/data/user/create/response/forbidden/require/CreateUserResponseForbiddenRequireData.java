@@ -1,8 +1,8 @@
 package data.user.create.response.forbidden.require;
 
-import data.user.common.CommonServerMessage;
+import common.data.CommonServerMessageData;
 
-public class CreateUserResponseForbiddenRequireData extends CommonServerMessage {
+public class CreateUserResponseForbiddenRequireData extends CommonServerMessageData {
 
     public CreateUserResponseForbiddenRequireData(Boolean success, String message) {
         super(success, message);

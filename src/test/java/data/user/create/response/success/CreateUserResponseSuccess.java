@@ -1,7 +1,7 @@
 package data.user.create.response.success;
 
-import data.user.common.CommonResponseSuccessSpecs;
+import common.http.ResponseSuccessSpecs;
 
-public class CreateUserResponseSuccess extends CommonResponseSuccessSpecs {
+public class CreateUserResponseSuccess extends ResponseSuccessSpecs {
 
 }

@@ -1,8 +1,8 @@
 package data.user.delete.response;
 
-import data.user.common.CommonServerMessage;
+import common.data.CommonServerMessageData;
 
-public class DeleteUserResponseSuccessData extends CommonServerMessage {
+public class DeleteUserResponseSuccessData extends CommonServerMessageData {
 
     public DeleteUserResponseSuccessData(Boolean success, String message) {
         super(success, message);

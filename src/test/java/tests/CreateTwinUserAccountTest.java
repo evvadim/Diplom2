@@ -36,7 +36,7 @@ public class CreateTwinUserAccountTest {
         createUserRequestOrigin = new CreateUserRequest(createUserDataOrigin);
 
         // проверяем успешность создания
-        Response response = createUserRequestOrigin.createUserRequest(CreateUserResponseSuccess.RESPONSE_SPEC);
+        Response response = createUserRequestOrigin.fetchResponse(CreateUserResponseSuccess.RESPONSE_SPEC);
         // извлекаем из ответа объект с данными
         createUserResponseSuccessDataOrigin = (CreateUserResponseSuccessData) CommonCreateUserRequest.extractResponseToObject(response, CreateUserResponseSuccessData.class);
 
@@ -50,7 +50,7 @@ public class CreateTwinUserAccountTest {
         createUserRequestTwin = new CreateUserRequest(createUserDataTwin);
 
         // ожидаем получить код 403, статус `Forbidden` и сообщение `User already exists`
-        Response response = createUserRequestTwin.createUserRequest(CreateUserResponseForbiddenExist.RESPONSE_SPEC);
+        Response response = createUserRequestTwin.fetchResponse(CreateUserResponseForbiddenExist.RESPONSE_SPEC);
         createUserResponseSuccessDataTwin = (CreateUserResponseSuccessData) CommonCreateUserRequest.extractResponseToObject(response, CreateUserResponseSuccessData.class);
 
     }
@@ -58,7 +58,7 @@ public class CreateTwinUserAccountTest {
     @After
     public void tearDown() {
         // удаляем пользователя
-        new DeleteUserRequest(createUserResponseSuccessDataOrigin.getAccessToken()).deleteUserRequest();
+        new DeleteUserRequest(createUserResponseSuccessDataOrigin.getAccessToken()).fetchResponse();
     }
 
 }
