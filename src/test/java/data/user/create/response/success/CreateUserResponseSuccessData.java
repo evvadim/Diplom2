@@ -1,11 +1,11 @@
 package data.user.create.response.success;
 
 import data.user.common.CommonUserDataFields;
-import data.user.common.elements.User;
+import data.user.common.elements.UserPublicData;
 
 public class CreateUserResponseSuccessData extends CommonUserDataFields {
 
-    public CreateUserResponseSuccessData(Boolean success, User user, String accessToken, String refreshToken) {
+    public CreateUserResponseSuccessData(Boolean success, UserPublicData user, String accessToken, String refreshToken) {
         super(success, user, accessToken, refreshToken);
     }
 

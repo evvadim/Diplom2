@@ -1,15 +1,15 @@
 package data.user.common;
 
-import data.user.common.elements.User;
+import data.user.common.elements.UserPublicData;
 
 public class CommonUserDataFields {
 
     private Boolean success;
-    private User user;
+    private UserPublicData user;
     private String accessToken;
     private String refreshToken;
 
-    public CommonUserDataFields(Boolean success, User user, String accessToken, String refreshToken) {
+    public CommonUserDataFields(Boolean success, UserPublicData user, String accessToken, String refreshToken) {
         this.success = success;
         this.user = user;
         this.accessToken = accessToken;
@@ -24,11 +24,11 @@ public class CommonUserDataFields {
         this.success = success;
     }
 
-    public User getUser() {
+    public UserPublicData getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserPublicData user) {
         this.user = user;
     }
 
