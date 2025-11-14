@@ -3,8 +3,8 @@ package tests;
 import data.order.request.CommonCreateOrderRequest;
 import data.order.request.CreateOrderData;
 import data.order.request.CreateOrderRequest;
-import data.order.response.success.nonauthorized.CreateOrderNonAuthorizedResponseSuccess;
-import data.order.response.success.nonauthorized.CreateOrderNonAuthorizedResponseSuccessData;
+import data.order.response.success.CreateOrderResponseSuccess;
+import data.order.response.success.CreateOrderResponseSuccessData;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.Before;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.*;
 
-public class CreateNonAuthorizedOrderTest {
+public class CreateOrderParamTest {
 
     ArrayList<String> ingredients;
     private final int countOfIngredients = 6;
@@ -35,10 +35,10 @@ public class CreateNonAuthorizedOrderTest {
         CreateOrderData createOrderData = new CreateOrderData(ingredients);
         CreateOrderRequest createOrderRequest = new CreateOrderRequest(createOrderData);
 
-        Response response = createOrderRequest.fetchResponse(CreateOrderNonAuthorizedResponseSuccess.RESPONSE_SPEC);
-        CreateOrderNonAuthorizedResponseSuccessData createOrderNonAuthorizedResponseSuccessData = (CreateOrderNonAuthorizedResponseSuccessData) CommonCreateOrderRequest.extractResponseToObject(response, CreateOrderNonAuthorizedResponseSuccessData.class);
+        Response response = createOrderRequest.fetchResponse(CreateOrderResponseSuccess.RESPONSE_SPEC);
+        CreateOrderResponseSuccessData createOrderResponseSuccessData = (CreateOrderResponseSuccessData) CommonCreateOrderRequest.extractResponseToObject(response, CreateOrderResponseSuccessData.class);
 
-        assertThat("Received number of Order is null", createOrderNonAuthorizedResponseSuccessData.getOrder().getNumber(), notNullValue());
+        assertThat("Received number of Order is null", createOrderResponseSuccessData.getOrder().getNumber(), notNullValue());
 
     }
 
