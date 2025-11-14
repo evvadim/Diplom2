@@ -2,6 +2,7 @@ package data.user.login.request;
 
 import common.http.FetchResponse;
 import config.endpoints.Endpoints;
+import data.user.login.LoginUser;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import io.restassured.specification.ResponseSpecification;
@@ -11,10 +12,10 @@ import static io.restassured.RestAssured.given;
 
 public class LoginUserRequest extends FetchResponse {
 
-    private final LoginUserData loginUserData;
+    private final LoginUser loginUser;
 
-    public LoginUserRequest(LoginUserData loginUserData) {
-        this.loginUserData = loginUserData;
+    public LoginUserRequest(LoginUser loginUser) {
+        this.loginUser = loginUser;
     }
 
     @Step("Login User POST Request")
@@ -22,7 +23,7 @@ public class LoginUserRequest extends FetchResponse {
 
         Response response = given()
                 .spec(CommonLoginUserRequest.requestSpecification)
-                .body(loginUserData)
+                .body(loginUser)
                 .post(Endpoints.LOGIN_USER);
 
         if (specification != null) {

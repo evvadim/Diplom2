@@ -1,19 +1,19 @@
-package data.user.login.request;
+package data.user.login;
 
 import data.user.create.request.CreateUserData;
 
-public class LoginUserData {
+public class LoginUser {
 
     private final String email;
     private final String password;
     private CreateUserData createUserData;
 
-    public LoginUserData(String email, String password) {
+    public LoginUser(String email, String password) {
         this.email = email;
         this.password = password;
     }
 
-    public LoginUserData(CreateUserData createUserData) {
+    public LoginUser(CreateUserData createUserData) {
         this.email = createUserData.getEmail();
         this.password = createUserData.getPassword();
     }

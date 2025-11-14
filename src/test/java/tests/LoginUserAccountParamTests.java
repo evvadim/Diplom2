@@ -7,7 +7,7 @@ import data.user.create.response.success.CreateUserResponseSuccessData;
 import data.user.delete.request.DeleteUserRequest;
 import data.user.delete.response.DeleteUserResponseSuccess;
 import data.user.login.request.CommonLoginUserRequest;
-import data.user.login.request.LoginUserData;
+import data.user.login.LoginUser;
 import data.user.login.request.LoginUserRequest;
 import data.user.login.response.success.LoginUserResponseSuccess;
 import data.user.login.response.success.LoginUserResponseSuccessData;
@@ -32,11 +32,11 @@ public class LoginUserAccountParamTests {
     LoginUserResponseSuccessData loginUserResponseSuccessData;
 
     // переменные для параметризации
-    private final LoginUserData loginUserData;
+    private final LoginUser loginUser;
     private final Boolean isShouldBeLoggedIn;
 
     public LoginUserAccountParamTests(String email, String password, Boolean isShouldBeLoggedIn) {
-        this.loginUserData = new LoginUserData(email, password);
+        this.loginUser = new LoginUser(email, password);
         this.isShouldBeLoggedIn = isShouldBeLoggedIn;
     }
 
@@ -64,7 +64,7 @@ public class LoginUserAccountParamTests {
     @DisplayName("Login User Test with or without required fields")
     public void loginUserTest() {
 
-        LoginUserRequest loginUserRequest = new LoginUserRequest(loginUserData);
+        LoginUserRequest loginUserRequest = new LoginUserRequest(loginUser);
 
         if (isShouldBeLoggedIn) {
             Response response = loginUserRequest.fetchResponse(LoginUserResponseSuccess.RESPONSE_SPEC);

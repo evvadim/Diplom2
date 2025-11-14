@@ -16,6 +16,9 @@ public class CommonUserDataFields {
         this.refreshToken = refreshToken;
     }
 
+    public CommonUserDataFields() {
+    }
+
     public Boolean getSuccess() {
         return success;
     }
