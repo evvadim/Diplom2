@@ -1,16 +1,16 @@
 package data.user.common.elements;
 
-public class UserPublicData {
+public class ElementUser {
 
     private String email;
     private String name;
 
-    public UserPublicData(String email, String name) {
+    public ElementUser(String email, String name) {
         this.email = email;
         this.name = name;
     }
 
-    public UserPublicData() {
+    public ElementUser() {
     }
 
     public String getEmail() {
