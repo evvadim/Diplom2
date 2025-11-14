@@ -12,6 +12,7 @@ import data.user.login.request.LoginUserRequest;
 import data.user.login.response.success.LoginUserResponseSuccess;
 import data.user.login.response.success.LoginUserResponseSuccessData;
 import data.user.login.response.unauthorized.LoginUserResponseUnauthorized;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
@@ -60,6 +61,7 @@ public class LoginUserAccountParamTests {
     }
 
     @Test
+    @DisplayName("Login User Test with or without required fields")
     public void loginUserTest() {
 
         LoginUserRequest loginUserRequest = new LoginUserRequest(loginUserData);

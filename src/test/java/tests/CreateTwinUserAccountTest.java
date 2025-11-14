@@ -43,7 +43,7 @@ public class CreateTwinUserAccountTest {
     }
 
     @Test
-    @DisplayName("Testing Create Twin Users using same email.")
+    @DisplayName("Testing Create Twin Users using same email")
     public void createUserExpectedTrue() {
 
         // создаём объект запроса учётной записи близнеца
