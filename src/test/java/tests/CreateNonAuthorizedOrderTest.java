@@ -5,6 +5,7 @@ import data.order.request.CreateOrderData;
 import data.order.request.CreateOrderRequest;
 import data.order.response.success.nonauthorized.CreateOrderNonAuthorizedResponseSuccess;
 import data.order.response.success.nonauthorized.CreateOrderNonAuthorizedResponseSuccessData;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,10 +29,10 @@ public class CreateNonAuthorizedOrderTest {
     }
 
     @Test
-    public void getIngredients() {
+    @DisplayName("Testing Create Order by Non-Authorized User")
+    public void createOrderNonAuthorizedUser() {
 
         CreateOrderData createOrderData = new CreateOrderData(ingredients);
-
         CreateOrderRequest createOrderRequest = new CreateOrderRequest(createOrderData);
 
         Response response = createOrderRequest.fetchResponse(CreateOrderNonAuthorizedResponseSuccess.RESPONSE_SPEC);
