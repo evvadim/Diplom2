@@ -1,6 +1,6 @@
-package data.order.response.success;
+package data.order.response.success.nonauthorized;
 
-import data.order.response.success.elements.ElementOrder;
+import data.order.response.success.nonauthorized.elements.ElementOrder;
 
 public class CreateOrderResponseSuccessData {
 

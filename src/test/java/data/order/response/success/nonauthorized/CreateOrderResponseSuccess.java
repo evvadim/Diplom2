@@ -1,4 +1,4 @@
-package data.order.response.success;
+package data.order.response.success.nonauthorized;
 
 import common.http.ResponseSuccessSpecs;
 
