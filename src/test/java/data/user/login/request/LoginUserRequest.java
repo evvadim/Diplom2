@@ -1,4 +1,4 @@
-package data.user.login.response.request;
+package data.user.login.request;
 
 import config.endpoints.Endpoints;
 import io.qameta.allure.Step;

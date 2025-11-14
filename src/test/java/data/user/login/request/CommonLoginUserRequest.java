@@ -1,4 +1,4 @@
-package data.user.login.response.request;
+package data.user.login.request;
 
 import config.Config;
 import data.user.common.ACommonRequest;
