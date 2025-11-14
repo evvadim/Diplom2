@@ -7,7 +7,6 @@ import data.user.create.response.forbidden.require.CreateUserResponseForbiddenRe
 import data.user.create.response.success.CreateUserResponseSuccess;
 import data.user.create.response.success.CreateUserResponseSuccessData;
 import data.user.delete.request.DeleteUserRequest;
-import data.user.delete.response.DeleteUserResponseSuccess;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.After;
@@ -48,11 +47,11 @@ public class CreateUserAccountParamTests {
 
         // проверяем возможность создать пользователя
         CreateUserRequest createUserRequestValid = new CreateUserRequest(createUserWithValidData);
-        Response response = createUserRequestValid.fetchResponse(CreateUserResponseSuccess.RESPONSE_SPEC);
+        Response response = createUserRequestValid.fetchResponse();
         CreateUserResponseSuccessData createUserResponseSuccessDataValid = (CreateUserResponseSuccessData) CommonCreateUserRequest.extractResponseToObject(response, CreateUserResponseSuccessData.class);
 
         // удаляем этого пользователя
-        new DeleteUserRequest(createUserResponseSuccessDataValid.getAccessToken()).fetchResponse(DeleteUserResponseSuccess.RESPONSE_SPEC);
+        new DeleteUserRequest(createUserResponseSuccessDataValid.getAccessToken()).fetchResponse();
 
     }
 
@@ -73,7 +72,7 @@ public class CreateUserAccountParamTests {
     @After
     public void tearDown() {
         if (isUserShouldBeCreated) {
-            new DeleteUserRequest(createUserResponseSuccessData.getAccessToken()).fetchResponse(DeleteUserResponseSuccess.RESPONSE_SPEC);
+            new DeleteUserRequest(createUserResponseSuccessData.getAccessToken()).fetchResponse();
         }
     }
 

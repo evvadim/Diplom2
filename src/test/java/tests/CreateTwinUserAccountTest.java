@@ -4,7 +4,6 @@ import data.user.create.request.CommonCreateUserRequest;
 import data.user.create.request.CreateUserData;
 import data.user.create.request.CreateUserRequest;
 import data.user.create.response.forbidden.exist.CreateUserResponseForbiddenExist;
-import data.user.create.response.success.CreateUserResponseSuccess;
 import data.user.create.response.success.CreateUserResponseSuccessData;
 import data.user.delete.request.DeleteUserRequest;
 import io.qameta.allure.junit4.DisplayName;
@@ -36,7 +35,7 @@ public class CreateTwinUserAccountTest {
         createUserRequestOrigin = new CreateUserRequest(createUserDataOrigin);
 
         // проверяем успешность создания
-        Response response = createUserRequestOrigin.fetchResponse(CreateUserResponseSuccess.RESPONSE_SPEC);
+        Response response = createUserRequestOrigin.fetchResponse();
         // извлекаем из ответа объект с данными
         createUserResponseSuccessDataOrigin = (CreateUserResponseSuccessData) CommonCreateUserRequest.extractResponseToObject(response, CreateUserResponseSuccessData.class);
 

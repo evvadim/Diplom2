@@ -5,7 +5,6 @@ import data.user.create.request.CreateUserData;
 import data.user.create.request.CreateUserRequest;
 import data.user.create.response.success.CreateUserResponseSuccessData;
 import data.user.delete.request.DeleteUserRequest;
-import data.user.delete.response.DeleteUserResponseSuccess;
 import data.user.login.request.CommonLoginUserRequest;
 import data.user.login.LoginUser;
 import data.user.login.request.LoginUserRequest;
@@ -78,6 +77,6 @@ public class LoginUserAccountParamTests {
 
     @After
     public void tearDown() {
-        new DeleteUserRequest(createUserResponseSuccessData.getAccessToken()).fetchResponse(DeleteUserResponseSuccess.RESPONSE_SPEC);
+        new DeleteUserRequest(createUserResponseSuccessData.getAccessToken()).fetchResponse();
     }
 }
