@@ -2,19 +2,19 @@ package data.order.response.success.nonauthorized;
 
 import data.order.response.success.nonauthorized.elements.ElementOrder;
 
-public class CreateOrderResponseSuccessData {
+public class CreateOrderNonAuthorizedResponseSuccessData {
 
     private Boolean success;
     private ElementOrder order;
     private String name;
 
-    public CreateOrderResponseSuccessData(Boolean success, ElementOrder order, String name) {
+    public CreateOrderNonAuthorizedResponseSuccessData(Boolean success, ElementOrder order, String name) {
         this.success = success;
         this.order = order;
         this.name = name;
     }
 
-    public CreateOrderResponseSuccessData() {
+    public CreateOrderNonAuthorizedResponseSuccessData() {
     }
 
     public Boolean getSuccess() {
