@@ -63,8 +63,7 @@ public class CreateOrderParamTest {
 
         if (!isHashValid) {
             int n = (int) (Math.random() * (countOfIngredients - 1));
-            int length = ingredients.get(n).length();
-            ingredients.set(n, String.format("%s%s", ingredients.get(n).substring(length / 2), ingredients.get(n).substring(0, length / 2 - 1)));
+            ingredients.set(n, shakeString(ingredients.get(n)));
         }
 
         if (isUserAuthorized) {
@@ -121,6 +120,13 @@ public class CreateOrderParamTest {
         if (isUserAuthorized) {
             new DeleteUserRequest(createUserResponseSuccessData.getAccessToken()).fetchResponse();
         }
+
+    }
+
+    public String shakeString(String string) {
+
+        int length = string.length();
+        return String.format("%s%s", string.substring(length / 2), string.substring(0, length / 2 - 1));
 
     }
 

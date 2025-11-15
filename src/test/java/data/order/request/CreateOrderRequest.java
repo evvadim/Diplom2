@@ -12,7 +12,7 @@ import static io.restassured.RestAssured.given;
 public class CreateOrderRequest extends FetchResponse {
 
     private final CreateOrderData createOrderData;
-    private String credential;
+    private final String credential;
 
     public CreateOrderRequest(CreateOrderData createOrderData, String credential) {
         this.createOrderData = createOrderData;
@@ -22,13 +22,10 @@ public class CreateOrderRequest extends FetchResponse {
     @Step("Create Order POST Request")
     protected Response requestAndCheckResponseSpec(ResponseSpecification specification) {
 
-        String prefix = "Bearer ";
-        credential = credential.startsWith(prefix) ? credential.substring(prefix.length()) : credential;
-
         Response response = given()
                 .spec(CommonCreateOrderRequest.requestSpecification)
                 .body(createOrderData)
-                .auth().oauth2(credential)
+                .header("Authorization", credential)
                 .post(Endpoints.CREATE_ORDER);
 
         if (specification != null) {

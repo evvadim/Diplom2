@@ -11,7 +11,7 @@ import static io.restassured.RestAssured.given;
 
 public class DeleteUserRequest extends FetchResponse {
 
-    private String accessToken;
+    private final String accessToken;
 
     public DeleteUserRequest(String accessToken) {
         this.accessToken = accessToken;
@@ -20,12 +20,9 @@ public class DeleteUserRequest extends FetchResponse {
     @Step("Delete User DELETE Request")
     protected Response requestAndCheckResponseSpec(ResponseSpecification specification) {
 
-        String prefix = "Bearer ";
-        accessToken = accessToken.startsWith(prefix) ? accessToken.substring(prefix.length()) : accessToken;
-
         Response response = given()
                 .spec(CommonDeleteUserRequest.requestSpecification)
-                .auth().oauth2(accessToken)
+                .header("Authorization", accessToken)
                 .delete(Endpoints.DELETE_USER);
 
         if (specification != null) {
