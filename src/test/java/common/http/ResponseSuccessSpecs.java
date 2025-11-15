@@ -1,6 +1,5 @@
 package common.http;
 
-import data.user.create.response.success.CreateUserResponseSuccessData;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.ResponseSpecification;
 
