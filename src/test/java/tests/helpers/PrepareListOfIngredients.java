@@ -26,7 +26,7 @@ public class PrepareListOfIngredients {
             int listSize = getIngredientsResponseSuccessData.getData().size();
 
             for (int i = 0; i < count; i++) {
-                ingredients.add(getIngredientsResponseSuccessData.getData().get((int) (Math.random() * (listSize - 1))).get_id());
+                ingredients.add(getIngredientsResponseSuccessData.getData().get((int) (Math.random() * (listSize - 1))).getId());
 
             }
         } else {

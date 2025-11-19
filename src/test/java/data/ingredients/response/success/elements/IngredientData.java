@@ -1,8 +1,11 @@
 package data.ingredients.response.success.elements;
 
+import io.qameta.allure.internal.shadowed.jackson.annotation.JsonProperty;
+
 public class IngredientData {
 
-    private String _id;
+    @JsonProperty("_id")
+    private String id;
     private String name;
     private String type;
     private Integer proteins;
@@ -11,11 +14,14 @@ public class IngredientData {
     private Integer calories;
     private Integer price;
     private String image;
-    private String image_mobile;
-    private String image_large;
-    private Integer __v;
+    @JsonProperty("image_mobile")
+    private String imageMobile;
+    @JsonProperty("image_large")
+    private String imageLarge;
+    @JsonProperty("__v")
+    private Integer v;
 
-    public IngredientData(String _id,
+    public IngredientData(String id,
                           String name,
                           String type,
                           Integer proteins,
@@ -24,10 +30,10 @@ public class IngredientData {
                           Integer calories,
                           Integer price,
                           String image,
-                          String image_mobile,
-                          String image_large,
-                          Integer __v) {
-        this._id = _id;
+                          String imageMobile,
+                          String imageLarge,
+                          Integer v) {
+        this.id = id;
         this.name = name;
         this.type = type;
         this.proteins = proteins;
@@ -36,20 +42,20 @@ public class IngredientData {
         this.calories = calories;
         this.price = price;
         this.image = image;
-        this.image_mobile = image_mobile;
-        this.image_large = image_large;
-        this.__v = __v;
+        this.imageMobile = imageMobile;
+        this.imageLarge = imageLarge;
+        this.v = v;
     }
 
     public IngredientData() {
     }
 
-    public String get_id() {
-        return _id;
+    public String getId() {
+        return id;
     }
 
-    public void set_id(String _id) {
-        this._id = _id;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -116,28 +122,28 @@ public class IngredientData {
         this.image = image;
     }
 
-    public String getImage_mobile() {
-        return image_mobile;
+    public String getImageMobile() {
+        return imageMobile;
     }
 
-    public void setImage_mobile(String image_mobile) {
-        this.image_mobile = image_mobile;
+    public void setImageMobile(String imageMobile) {
+        this.imageMobile = imageMobile;
     }
 
-    public String getImage_large() {
-        return image_large;
+    public String getImageLarge() {
+        return imageLarge;
     }
 
-    public void setImage_large(String image_large) {
-        this.image_large = image_large;
+    public void setImageLarge(String imageLarge) {
+        this.imageLarge = imageLarge;
     }
 
-    public Integer get__v() {
-        return __v;
+    public Integer getV() {
+        return v;
     }
 
-    public void set__v(Integer __v) {
-        this.__v = __v;
+    public void setV(Integer v) {
+        this.v = v;
     }
 
 }
