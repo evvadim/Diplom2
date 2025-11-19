@@ -1,6 +1,5 @@
 package tests;
 
-import config.Config;
 import data.order.request.CommonCreateOrderRequest;
 import data.order.request.CreateOrderData;
 import data.order.request.CreateOrderRequest;
@@ -15,6 +14,7 @@ import data.user.create.response.success.CreateUserResponseSuccessData;
 import data.user.delete.request.DeleteUserRequest;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
+import net.datafaker.Faker;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -59,6 +59,7 @@ public class CreateOrderParamTest {
     @Before
     public void setUp() {
 
+        Faker faker = new Faker();
         ingredients = new PrepareListOfIngredients(countOfIngredients).getIngredients();
 
         if (!isHashValid) {
@@ -68,7 +69,7 @@ public class CreateOrderParamTest {
 
         if (isUserAuthorized) {
 
-            CreateUserData createUserData = new CreateUserData(Config.getEmail(), Config.getUserPassword(), Config.getUserName());
+            CreateUserData createUserData = new CreateUserData(faker.internet().emailAddress(), faker.internet().password(12, 14, true), faker.name().name());
             CreateUserRequest createUserRequest = new CreateUserRequest(createUserData);
             Response response = createUserRequest.fetchResponse(CreateOrderResponseSuccess.RESPONSE_SPEC);
             createUserResponseSuccessData = (CreateUserResponseSuccessData) CommonCreateUserRequest.extractResponseToObject(response, CreateUserResponseSuccessData.class);
